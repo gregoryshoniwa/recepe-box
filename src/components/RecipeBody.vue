@@ -3,8 +3,8 @@
       <v-row class="text-center">
     <v-col>
       <v-card max-width="900" class="mx-auto">
-        <v-toolbar color="cyan" dark>
-          <v-toolbar-title>Ingredients</v-toolbar-title>
+        <v-toolbar color="blue" dark>
+          <v-toolbar-title> : Recipe Selected</v-toolbar-title>
 
           <v-spacer></v-spacer>
 
@@ -34,7 +34,22 @@
           </v-tooltip>
         </v-toolbar>
         <div class="recepe-body">
-          {{ recepes }}
+          <br>
+          <h3>Ingredients</h3>
+          <br>
+          <ul>
+              <li v-for="(item, i) in recepesList[0].ingredients" :key="`ing${i}`">
+                  {{item}}
+              </li>
+          </ul>
+          <br>
+          <h3>Directions</h3>
+          <br>
+          <ul>
+              <li v-for="(item, i) in recepesList[0].directions" :key="`dir${i}`">
+                  {{i+1}}. {{item}}
+              </li>
+          </ul>
         </div>
       </v-card>
     </v-col>
@@ -51,7 +66,24 @@
         </v-card-title>
 
         <v-card-text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <v-text-field
+            class="mt-6"
+            label="Recipe Name"
+            outlined
+            v-model="recipe"
+          ></v-text-field>
+          <v-textarea
+          outlined
+          class="mt-2"
+          label="Enter Ingredients"
+          v-model="ingredients"
+        ></v-textarea>
+        <v-textarea
+          outlined
+         class="mt-2"
+          label="Enter Directions"
+          v-model="directions"
+        ></v-textarea>
         </v-card-text>
 
         <v-divider></v-divider>
@@ -60,10 +92,15 @@
           <v-spacer></v-spacer>
           <v-btn
             color="primary"
-            text
             @click="dialog = false"
           >
-            I accept
+            Save
+          </v-btn>
+          <v-btn
+            color="error"
+            @click="dialog = false"
+          >
+            Close
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -76,7 +113,10 @@
 export default {
   data: () => ({
     dialog:false,
-    recepes: [
+    recipe: "",
+    ingredients: "",
+    directions: "",
+    recepesList: [
       {
         recipe: "Artichoke-Pasta",
         ingredients: [
@@ -183,5 +223,12 @@ export default {
 .recepe-body {
   height: 300px;
   overflow: auto;
+  text-align: left;
+}
+li {
+    margin-left: 30px;
+}
+h3 {
+    margin-left: 10px;
 }
 </style>

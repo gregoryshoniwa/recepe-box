@@ -2,7 +2,7 @@
   <v-row class="text-center">
     <v-col>
       <v-card max-width="900" class="mx-auto">
-        <v-toolbar color="cyan" dark>
+        <v-toolbar color="blue" dark>
           <v-toolbar-title>Recipe List</v-toolbar-title>
 
           <v-spacer></v-spacer>
