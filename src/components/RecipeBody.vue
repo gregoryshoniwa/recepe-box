@@ -1,0 +1,187 @@
+<template>
+ <div>
+      <v-row class="text-center">
+    <v-col>
+      <v-card max-width="900" class="mx-auto">
+        <v-toolbar color="cyan" dark>
+          <v-toolbar-title>Ingredients</v-toolbar-title>
+
+          <v-spacer></v-spacer>
+
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn icon v-bind="attrs" v-on="on" @click="dialog = true">
+                <v-icon>mdi-plus</v-icon>
+              </v-btn>
+            </template>
+            <span>Add Recipe</span>
+          </v-tooltip>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn icon v-bind="attrs" v-on="on" @click="dialog = true">
+                <v-icon>mdi-pencil</v-icon>
+              </v-btn>
+            </template>
+            <span>Edit Recipe</span>
+          </v-tooltip>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }" >
+              <v-btn icon v-bind="attrs" v-on="on" @click="dialog = true">
+                <v-icon>mdi-delete</v-icon>
+              </v-btn>
+            </template>
+            <span>Delete Recipe</span>
+          </v-tooltip>
+        </v-toolbar>
+        <div class="recepe-body">
+          {{ recepes }}
+        </div>
+      </v-card>
+    </v-col>
+  </v-row>
+
+     <v-dialog
+      v-model="dialog"
+      width="500"
+    >
+      
+      <v-card>
+        <v-card-title class="text-h5 grey lighten-2">
+          Privacy Policy
+        </v-card-title>
+
+        <v-card-text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            text
+            @click="dialog = false"
+          >
+            I accept
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+ </div>
+ 
+</template>
+
+<script>
+export default {
+  data: () => ({
+    dialog:false,
+    recepes: [
+      {
+        recipe: "Artichoke-Pasta",
+        ingredients: [
+          "2 tablespoons butter",
+          "2 cloves garlic, minced",
+          "1 cup heavy cream",
+          "3/4 teaspoon salt",
+          "1 teaspoon fresh-ground black pepper",
+          "2 1/2 cups canned, drained artichoke hearts (two 14-ounce cans), rinsed and cut into halves or quarters",
+          "3/4 pound fusilli",
+          "1/2 cup grated Parmesan cheese",
+          "2 tablespoons chopped chives, scallion tops, or parsley",
+        ],
+        directions: [
+          "In a medium saucepan, melt the butter over moderately low heat. Add the garlic and cook for 30 seconds. Stir in the cream, salt, pepper, and artichoke hearts. Cook until just heated through, about 3 minutes.",
+          "In a large pot of boiling, salted water, cook the fusilli until just done, about 13 minutes. Drain the pasta and toss with the cream sauce, Parmesan, and chives.",
+        ],
+      },
+      {
+        recipe: "Garlic-Chicken",
+        ingredients: [
+          "3 tablespoons butter",
+          "1 teaspoon seasoning salt",
+          "1 teaspoon onion powder ",
+          "4 skinless, boneless chicken breast halves",
+          "2 teaspoons garlic powder",
+        ],
+        directions: [
+          "Melt butter in a large skillet over medium high heat.",
+          "Add chicken and sprinkle with garlic powder, seasoning salt and onion powder.",
+          "Saute about 10 to 15 minutes on each side, or until chicken is cooked through and juices run clear.",
+        ],
+      },
+      {
+        recipe: "Easy-Chocolate-Pie",
+        ingredients: [
+          "1 (12 ounce) can evaporated milk",
+          "1 (5.9 ounce) package chocolate instant pudding mix",
+          "1 (6.5 ounce) can whipped cream",
+          "1/2 cup miniature semi-sweet chocolate chips (optional)",
+          "1 (9 inch) graham cracker pie crust",
+          "Another can of whipped cream for garnish (optional)",
+        ],
+        directions: [
+          "Pour milk into medium bowl. Add dry pudding mix; beat with wire whisk until well blended and mixture just begins to thicken. Stir in half of the chocolate chips.",
+          "Add contents of whipped cream can; stir gently but quickly until well blended. Pour into crust; cover.",
+          "Refrigerate 6 hours, or until set. Cut into 8 slices to serve. Garnish with additional whipped cream and remaining chocolate chips, if desired.",
+        ],
+      },
+      {
+        recipe: "Lime-Chicken-Tacos",
+        ingredients: [
+          "1 1/2 pounds skinless, boneless chicken breast meat - cubed",
+          "1/8 cup red wine vinegar",
+          "1/2 lime, juiced",
+          "1 teaspoon white sugar",
+          "1/2 teaspoon salt",
+          "1/2 teaspoon ground black pepper",
+          "2 green onions, chopped",
+          "2 cloves garlic, minced",
+          "1 teaspoon dried oregano",
+          "10 (6 inch) corn tortillas",
+          "1 tomato, diced",
+          "1/4 cup shredded lettuce",
+          "1/4 cup shredded Monterey Jack cheese",
+          "1/4 cup salsa",
+        ],
+        directions: [
+          "Saute chicken in a medium saucepan over medium high heat for about 20 minutes. Add vinegar, lime juice, sugar, salt, pepper, green onion, garlic and oregano. Simmer for an extra 10 minutes.",
+          "Heat an iron skillet over medium heat. Place a tortilla in the pan, warm, and turn over to heat the other side. Repeat with remaining tortillas. Serve lime chicken mixture in warm tortillas topped with tomato, lettuce, cheese and salsa.",
+        ],
+      },
+      {
+        recipe: "Artichoke-Dip",
+        ingredients: [
+          "1 8oz package soft cream cheese",
+          "4oz mayonnaise",
+          "4oz sour cream",
+          "1/4 Cup Fresh Grated Parmesan Cheese",
+          "1/4 Cup Fresh Grated Romano Cheese",
+          "2 eggs",
+          "3/4 Cup dairy sour cream",
+          "1 16oz can artichoke hearts",
+          "1/4 Cup fresh chopped chives",
+          "1 tbs fresh minced garlic",
+        ],
+        directions: [
+          "Soften the cream cheese before mixing.",
+          "Rinse well, then dice the artichokes into small ½” size pieces.",
+          "Into a mixing bowl place the softened cream cheese. Mix in the mayonnaise, sour cream, the Parmesan and Romano cheese, artichokes and garlic.",
+          "When the mixture is fairly well blended, spoon into a 9” round glass pie dish.",
+          "Set Oven to Bake at 350 degrees.",
+          "Place un-covered dish into oven for 20 – 25 minutes until the edges appear slightly golden and mixture is bubbling at the edge.",
+          "Remove and sprinkle chopped chives on top and let cool about 5 minutes before serving.",
+          "Enjoy!",
+        ],
+      },
+    ],
+  }),
+};
+</script>
+
+<style scoped>
+.recepe-body {
+  height: 300px;
+  overflow: auto;
+}
+</style>
