@@ -3,11 +3,12 @@
     <v-col>
       <v-card max-width="900" class="mx-auto">
         <v-toolbar color="blue" dark>
-          <v-toolbar-title>Recipe List</v-toolbar-title>
+          <v-toolbar-title v-if="recipes.length > 0">Recipe List</v-toolbar-title>
 
           <v-spacer></v-spacer>
 
           <v-text-field
+            v-if="recipes.length > 0"
             class="mt-8"
             outlined
             dense
@@ -44,8 +45,10 @@ export default {
       return this.$store.getters.getRecipes;
     },
   },
+  
   methods: {
       getRecipeIndex(index){
+        
           this.$store.dispatch("setRecipeIndex", index);
           
       }
@@ -55,7 +58,7 @@ export default {
 
 <style scoped>
 .recipes {
-  height: 150px;
+  max-height: 150px;
   overflow: auto;
   text-align: left;
 }
