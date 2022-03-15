@@ -20,7 +20,7 @@ yarn build
 yarn lint
 ```
 
-### Lints and fixes files
+### Funcationality
 
 To add new recipes you simply click the add recipe button and a dialog will open. There you can create a new recipe with ingredients and directions that are separated with a `\` (back slash). you can also delete or edit recipes. There is also a search function. For searching you simply type the ingredient and press enter and a dialog will open with a list is recipes that contain the ingredients
 
