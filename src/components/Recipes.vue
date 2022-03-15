@@ -40,6 +40,38 @@
         </div>
       </v-card>
     </v-col>
+
+    <v-dialog v-model="dialog" width="300">
+      <v-card>
+        <v-card-title class="text-h5 grey lighten-2">
+          Search Results
+        </v-card-title>
+
+        <v-card-text>
+          <div class="recipes">
+          <v-list dense>
+            <v-list-item-group color="primary">
+              <v-list-item
+                v-for="(item, i) in results"
+                :key="i"
+                @click="getRecipeIndexSearch(item)"
+              >
+                <v-list-item-icon>
+                  <v-icon>mdi-silverware-fork-knife</v-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                  <v-list-item-title v-text="item.recipe"></v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-list>
+        </div>
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+      </v-card>
+    </v-dialog>
   </v-row>
 </template>
 
@@ -49,6 +81,8 @@ export default {
     results: [],
     searchText: "",
     status: false,
+    dialog: false
+    
   }),
   computed: {
     recipes() {
@@ -62,21 +96,20 @@ export default {
   methods: {
    
    onEnter() {
-    //  var results = this.recipes.filter((val) =>{
-    //    return this.filterData.find((val2) =>{
-    //      return val.recipe.includes(val2)
-    //    })
-    //  })
-    console.log(this.filterData)
-    const res = this.recipes.filter(item => item.ingredients.some(
+    
+    
+    this.results = this.recipes.filter(item => item.ingredients.some(
         ingredient => this.filterData.every(f => ingredient.includes(f)))
       )
     
-
-   console.log(res)
+    this.dialog = true
     },
     getRecipeIndex(index) {
       this.$store.dispatch("setRecipeIndex", index);
+    },
+    getRecipeIndexSearch(data) {
+    
+      this.$store.dispatch("setRecipeIndex",this.recipes.indexOf(data));
     },
   },
 };
