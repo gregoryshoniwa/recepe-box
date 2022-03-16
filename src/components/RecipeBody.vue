@@ -79,16 +79,18 @@
             outlined
             v-model="recipe"
           ></v-text-field>
+          <div>Ingredients</div>
           <v-textarea
             outlined
             class="mt-2"
-            label="Enter Ingredients"
             v-model="ingredients"
+            placeholder='Separate each ingredient with a "\": \n\nMilk \ 2 Eggs \ 1/3 Cup Sugar'
           ></v-textarea>
+           <div>Directions</div>
           <v-textarea
             outlined
             class="mt-2"
-            label="Enter Directions"
+            placeholder='Separate each step with a "\": \n\nPreheat oven to 350°F \ \nCombine ingredients in pie crust \ \nBake until crust is golden brown. \'
             v-model="directions"
           ></v-textarea>
         </v-card-text>
